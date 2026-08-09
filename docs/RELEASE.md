@@ -1,5 +1,8 @@
 # Sparframe package release
 
+The GitHub core repository is public. npm publication is prepared but deferred
+until the npm account and package ownership are explicitly configured.
+
 Sparframe has two release layers:
 
 - `sparframe`: the public CLI and app template.

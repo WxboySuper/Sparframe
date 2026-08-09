@@ -9,3 +9,6 @@ Initial open-source Sparframe Core release candidate:
 - generic web and Expo/React Native reference shells;
 - deterministic source-level extension discovery and generated catalogs; and
 - the `sparframe` CLI with an empty, runnable app template.
+
+The source repository is public on GitHub. npm publication is intentionally
+deferred for now.
