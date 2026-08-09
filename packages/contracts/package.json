@@ -1,0 +1,30 @@
+{
+  "name": "@sparframe/contracts",
+  "version": "0.1.0",
+  "description": "Provider-neutral contracts for Sparframe applications",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "oxlint",
+    "typecheck": "tsc --noEmit"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "oxlint": "^1.75.0",
+    "typescript": "~6.0.2"
+  }
+}

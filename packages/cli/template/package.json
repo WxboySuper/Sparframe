@@ -1,0 +1,14 @@
+{
+  "name": "sparframe-app",
+  "private": true,
+  "packageManager": "pnpm@10.30.3",
+  "scripts": {
+    "start": "sparframe start",
+    "build": "sparframe build",
+    "sync": "sparframe sync",
+    "validate:mobile": "sparframe build"
+  },
+  "devDependencies": {
+    "sparframe": "^0.1.0"
+  }
+}

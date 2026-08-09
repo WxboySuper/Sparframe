@@ -1,0 +1,24 @@
+{
+  "name": "@sparframe/mobile",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "typecheck": "tsc --noEmit",
+    "expo:doctor": "expo-doctor"
+  },
+  "dependencies": {
+    "@sparframe/contracts": "workspace:*",
+    "@sparframe/extension-catalog": "workspace:*",
+    "@sparframe/foundation": "workspace:*",
+    "expo": "~57.0.11",
+    "expo-status-bar": "~57.0.1",
+    "react": "19.2.3",
+    "react-native": "0.86.2"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.2",
+    "expo-doctor": "^1.20.1",
+    "typescript": "~6.0.3"
+  }
+}

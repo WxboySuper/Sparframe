@@ -1,0 +1,11 @@
+{
+  "framework": "sparframe",
+  "version": "0.1.0",
+  "extensionsDirectory": "extensions",
+  "basePackages": [
+    "sparframe",
+    "@sparframe/contracts",
+    "@sparframe/foundation",
+    "@sparframe/design"
+  ]
+}

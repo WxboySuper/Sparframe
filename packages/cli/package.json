@@ -1,0 +1,23 @@
+{
+  "name": "sparframe",
+  "version": "0.1.0",
+  "description": "Create and run Sparframe app workspaces",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "sparframe": "src/cli.mjs"
+  },
+  "scripts": {
+    "test": "node --test src/*.test.mjs"
+  },
+  "files": [
+    "src",
+    "template"
+  ],
+  "engines": {
+    "node": ">=24.18.1 <25"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
