@@ -3,6 +3,14 @@
   "private": true,
   "description": "Open-source framework for building Sparframe application workspaces",
   "packageManager": "pnpm@10.30.3",
+  "pnpm": {
+    "overrides": {
+      "uuid": "11.1.1"
+    },
+    "patchedDependencies": {
+      "image-size@1.2.1": "patches/image-size@1.2.1.patch"
+    }
+  },
   "engines": {
     "node": ">=24.18.1 <25"
   },

@@ -40,3 +40,18 @@ repository checks, run `pnpm check:packages`, and publish the packages from a
 reviewed release commit.
 
 Actual registry credentials and publishing are intentionally not part of CI.
+
+## Dependency security
+
+The Expo 57 toolchain currently resolves `uuid` through `xcode` and
+`image-size` through Metro. The root package manifest pins `uuid` to the first
+patched release that remains compatible with the CommonJS consumer. The
+resolved `image-size` package has a local pnpm patch that rejects zero-length
+ICNS entries; its box-walking implementation already advances past zero-length
+JXL and HEIF boxes.
+
+The upstream advisories do not currently declare a patched `image-size`
+release, so `pnpm audit` may continue to report those two advisories even while
+the patched checkout is installed. Re-run the audit whenever Expo or Metro is
+updated, and remove the local patch as soon as an upstream release fixes the
+issue.

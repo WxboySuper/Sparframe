@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- harden the Expo/Metro development dependency tree by overriding `uuid` to a
+  patched CommonJS-compatible release and patching zero-length ICNS entries in
+  the unresolved upstream `image-size` advisory;
+
 ## 0.1.0 — 2026-08-09
 
 Initial open-source Sparframe Core release candidate:
