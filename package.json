@@ -5,6 +5,7 @@
   "packageManager": "pnpm@10.30.3",
   "pnpm": {
     "overrides": {
+      "postcss": "8.5.26",
       "uuid": "11.1.1"
     },
     "patchedDependencies": {

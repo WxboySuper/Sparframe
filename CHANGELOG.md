@@ -5,6 +5,8 @@
 - harden the Expo/Metro development dependency tree by overriding `uuid` to a
   patched CommonJS-compatible release and patching zero-length ICNS entries in
   the unresolved upstream `image-size` advisory;
+- align the mobile shell and generated CLI template with Expo SDK 54 for Expo
+  Go compatibility;
 
 ## 0.1.0 — 2026-08-09
 
