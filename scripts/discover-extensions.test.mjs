@@ -46,6 +46,81 @@ test('generated catalog supports an empty application', () => {
   assert.doesNotMatch(source, /from '@app\//);
 });
 
+test('generated catalog selects the only discovered auth provider', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'sparframe-discovery-auth-'));
+  try {
+    const directory = join(root, 'auth-local');
+    await mkdir(join(directory, 'src'), { recursive: true });
+    await writeFile(join(directory, 'src', 'index.ts'), 'export const localAuth = {};');
+    const source = renderCatalog(
+      [
+        {
+          directory,
+          manifest: {
+            name: '@app/extension-auth-local',
+            sparframe: {
+              id: 'auth-local',
+              extensionExport: 'localExtension',
+              serviceExports: { auth: 'createLocalAuthProvider' },
+            },
+          },
+        },
+      ],
+      root,
+    );
+    assert.match(source, /createLocalAuthProvider as discoveredAuthProviderFactory/);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test('generated catalog requires an explicit auth provider when several are discovered', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'sparframe-discovery-auth-'));
+  const previousProvider = process.env.SPARFRAME_AUTH_PROVIDER;
+  try {
+    delete process.env.SPARFRAME_AUTH_PROVIDER;
+    const packages = [];
+    for (const [id, exportName] of [
+      ['auth-local', 'createLocalAuthProvider'],
+      ['auth-clerk', 'createClerkAuthProvider'],
+    ]) {
+      const directory = join(root, id);
+      await mkdir(join(directory, 'src'), { recursive: true });
+      await writeFile(
+        join(directory, 'src', 'index.ts'),
+        `export const ${id.replace('-', '')} = {};`,
+      );
+      packages.push({
+        directory,
+        manifest: {
+          name: `@app/extension-${id}`,
+          sparframe: {
+            id,
+            extensionExport: `${id.replace('-', '')}Extension`,
+            serviceExports: { auth: exportName },
+          },
+        },
+      });
+    }
+    assert.throws(() => renderCatalog(packages, root), /Multiple auth extensions found/);
+
+    process.env.SPARFRAME_AUTH_PROVIDER = 'auth-missing';
+    assert.throws(
+      () => renderCatalog(packages, root),
+      /SPARFRAME_AUTH_PROVIDER must select exactly one auth extension/,
+    );
+
+    process.env.SPARFRAME_AUTH_PROVIDER = 'auth-clerk';
+    const source = renderCatalog(packages, root);
+    assert.match(source, /createClerkAuthProvider as discoveredAuthProviderFactory/);
+    assert.doesNotMatch(source, /createLocalAuthProvider as discoveredAuthProviderFactory/);
+  } finally {
+    if (previousProvider === undefined) delete process.env.SPARFRAME_AUTH_PROVIDER;
+    else process.env.SPARFRAME_AUTH_PROVIDER = previousProvider;
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
 test('shell catalogs include only their platform contribution entrypoints', async () => {
   const root = await mkdtemp(join(tmpdir(), 'sparframe-discovery-'));
   try {

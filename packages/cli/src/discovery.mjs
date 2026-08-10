@@ -26,6 +26,24 @@ function validateExportNames(names, description, root, directory) {
   }
 }
 
+function selectAuthProvider(packages) {
+  const providers = packages.filter(({ manifest }) => manifest.sparframe?.serviceExports?.auth);
+  const configured = process.env.SPARFRAME_AUTH_PROVIDER?.trim();
+  if (configured) {
+    const selected = providers.filter(({ manifest }) => manifest.sparframe.id === configured);
+    if (selected.length === 1) return selected[0];
+    throw new Error(
+      `SPARFRAME_AUTH_PROVIDER must select exactly one auth extension: ${configured}`,
+    );
+  }
+  if (providers.length === 1) return providers[0];
+  if (providers.length === 0) return undefined;
+
+  throw new Error(
+    `Multiple auth extensions found; set SPARFRAME_AUTH_PROVIDER (available: ${providers.map(({ manifest }) => manifest.sparframe.id).join(', ')})`,
+  );
+}
+
 export function discoverExtensionPackages(root, extensionsDirectory = 'extensions') {
   return packageDirectories(resolve(root, extensionsDirectory))
     .map((directory) => ({ directory, manifest: readJson(join(directory, 'package.json')) }))
@@ -88,6 +106,7 @@ export function validate(packages, root) {
 
 export function renderCatalog(packages, root) {
   validate(packages, root);
+  const authProvider = selectAuthProvider(packages);
   const imports = packages.map(({ manifest }, index) => {
     const alias = `extension${index}`;
     return `import { ${manifest.sparframe.extensionExport} as ${alias} } from '${manifest.name}';`;
@@ -108,12 +127,11 @@ export function renderCatalog(packages, root) {
       ),
     ];
   });
-  const authProviders = packages.flatMap(({ manifest }) => {
-    const exportName = manifest.sparframe.serviceExports?.auth;
-    return exportName
-      ? [`export { ${exportName} as discoveredAuthProviderFactory } from '${manifest.name}';`]
-      : [];
-  });
+  const authProviders = authProvider
+    ? [
+        `export { ${authProvider.manifest.sparframe.serviceExports.auth} as discoveredAuthProviderFactory } from '${authProvider.manifest.name}';`,
+      ]
+    : [];
   const exportLines = [...reexports, ...authProviders];
   const extensionList = extensions ? `[${extensions}]` : '[]';
   const packageList = packageMetadata ? `[\n${packageMetadata}\n]` : '[]';
