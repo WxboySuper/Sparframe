@@ -61,9 +61,10 @@ The Expo 54 toolchain currently resolves `uuid` through `xcode` and
 `image-size` through Metro. The root package manifest pins `uuid` to the first
 patched release that remains compatible with the CommonJS consumer and
 overrides PostCSS to a patched release for the Expo Metro config. The resolved
-`image-size` package has a local pnpm patch that rejects zero-length ICNS
-entries; its box-walking implementation already advances past zero-length JXL
-and HEIF boxes.
+`image-size` package has a local pnpm patch that rejects ICNS entries shorter
+than the 8-byte header and rejects zero-length or undersized container boxes
+before box walking. This covers the ICNS, JXL, and HEIF parser loop conditions
+described by the upstream advisories.
 
 The upstream advisories do not currently declare a patched `image-size`
 release, so `pnpm audit` may continue to report those two advisories even while

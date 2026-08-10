@@ -3,8 +3,9 @@
 ## Unreleased
 
 - harden the Expo/Metro development dependency tree by overriding `uuid` to a
-  patched CommonJS-compatible release and patching zero-length ICNS entries in
-  the unresolved upstream `image-size` advisory;
+  patched CommonJS-compatible release and patching the zero-length ICNS and
+  container-box loops described by the unresolved upstream `image-size`
+  advisories;
 - align the mobile shell and generated CLI template with Expo SDK 54 for Expo
   Go compatibility;
 
