@@ -1,7 +1,7 @@
 # Sparframe package release
 
-The GitHub core repository is public. npm publication is prepared but deferred
-until the npm account and package ownership are explicitly configured.
+The GitHub core repository and the first npm package release are public. The
+current release is `0.1.0`.
 
 Sparframe has two release layers:
 
@@ -41,6 +41,17 @@ The CLI template's `basePackages` and `devDependencies` then resolve from the
 registry. A new base release should update the package versions, run the full
 repository checks, run `pnpm check:packages`, and publish the packages from a
 reviewed release commit.
+
+After publication, verify the user-facing path from a clean temporary
+directory:
+
+```powershell
+npx --yes sparframe@0.1.0 init my-app
+pnpm --dir my-app build
+```
+
+This confirms that the CLI, its template, and all three scoped runtime packages
+resolve from the public registry.
 
 Actual registry credentials and publishing are intentionally not part of CI.
 

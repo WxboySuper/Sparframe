@@ -18,5 +18,5 @@ Initial open-source Sparframe Core release candidate:
 - deterministic source-level extension discovery and generated catalogs; and
 - the `sparframe` CLI with an empty, runnable app template.
 
-The source repository is public on GitHub. npm publication is intentionally
-deferred for now.
+The source repository is public on GitHub, and the four public packages are
+available on npm at version `0.1.0`.
