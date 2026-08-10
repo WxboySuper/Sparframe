@@ -1,6 +1,6 @@
 {
   "name": "sparframe",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create and run Sparframe app workspaces",
   "license": "MIT",
   "type": "module",

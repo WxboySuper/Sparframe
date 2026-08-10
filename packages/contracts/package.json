@@ -1,6 +1,6 @@
 {
   "name": "@sparframe/contracts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Provider-neutral contracts for Sparframe applications",
   "license": "MIT",
   "type": "module",

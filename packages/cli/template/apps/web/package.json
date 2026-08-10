@@ -8,9 +8,9 @@
     "typecheck": "tsc -b --pretty false"
   },
   "dependencies": {
-    "@sparframe/contracts": "^0.1.0",
+    "@sparframe/contracts": "^0.1.1",
     "@sparframe/extension-catalog": "workspace:*",
-    "@sparframe/foundation": "^0.1.0",
+    "@sparframe/foundation": "^0.1.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
