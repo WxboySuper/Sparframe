@@ -9,16 +9,17 @@ The core is deliberately not a productivity app and does not ship domain
 features or integrations. An application chooses its own extensions,
 authentication provider, persistence, synchronization, and presentation.
 
-## Quick start after npm publication
+## Quick start
 
 ```powershell
-npx sparframe init my-app
+npx sparframe@0.1.0 init my-app
 cd my-app
 pnpm start
 ```
 
-The npm publication is prepared but intentionally deferred. Until the packages
-are published, use the source-development path below.
+The `0.1.0` packages are published on npm. `init` creates a workspace with web
+and Expo/React Native shells, installs the public core packages, and generates
+an empty extension catalog.
 
 ## Develop from source
 
