@@ -65,6 +65,12 @@ test('shell catalogs include only their platform contribution entrypoints', asyn
             contributionEntrypoints: { web: './web.tsx', mobile: './mobile.tsx' },
             webContributionExport: 'webContributions',
             mobileContributionExport: 'mobileContributions',
+            catalogExports: {
+              shellValues: {
+                web: ['WebProvider'],
+                mobile: ['MobileProvider'],
+              },
+            },
           },
         },
       },
@@ -74,9 +80,11 @@ test('shell catalogs include only their platform contribution entrypoints', asyn
 
     assert.match(web, /extension-example\/web/);
     assert.match(web, /discoveredWebExtensions/);
+    assert.match(web, /export \{ WebProvider \} from '@app\/extension-example\/web'/);
     assert.doesNotMatch(web, /extension-example\/mobile/);
     assert.match(mobile, /extension-example\/mobile/);
     assert.match(mobile, /discoveredMobileExtensions/);
+    assert.match(mobile, /export \{ MobileProvider \} from '@app\/extension-example\/mobile'/);
     assert.doesNotMatch(mobile, /extension-example\/web/);
   } finally {
     await rm(root, { recursive: true, force: true });

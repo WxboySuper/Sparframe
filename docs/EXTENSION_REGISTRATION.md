@@ -32,3 +32,8 @@ Adding an extension should touch its own package metadata and the generated
 catalog output, not foundation or shell source. In a generated app, `start`
 and `build` refresh that catalog automatically; `sync` is an explicit
 diagnostic command rather than a required registration step.
+
+Generated shell catalogs may also re-export values declared through an
+extension's optional `catalogExports.shellValues` metadata. Those values are
+resolved from the matching shell contribution entrypoint, so a web-only or
+mobile-only host adapter remains extension-owned.
