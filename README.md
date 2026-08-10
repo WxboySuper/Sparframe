@@ -12,12 +12,12 @@ authentication provider, persistence, synchronization, and presentation.
 ## Quick start
 
 ```powershell
-npx sparframe@0.1.0 init my-app
+npx sparframe@0.1.1 init my-app
 cd my-app
 pnpm start
 ```
 
-The `0.1.0` packages are published on npm. `init` creates a workspace with web
+The `0.1.1` packages are published on npm. `init` creates a workspace with web
 and Expo/React Native shells, installs the public core packages, and generates
 an empty extension catalog.
 

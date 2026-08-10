@@ -8,9 +8,9 @@
     "expo:doctor": "expo-doctor"
   },
   "dependencies": {
-    "@sparframe/contracts": "^0.1.0",
+    "@sparframe/contracts": "^0.1.1",
     "@sparframe/extension-catalog": "workspace:*",
-    "@sparframe/foundation": "^0.1.0",
+    "@sparframe/foundation": "^0.1.1",
     "expo": "~54.0.36",
     "expo-status-bar": "~3.0.9",
     "react": "19.1.0",

@@ -1,6 +1,6 @@
 {
   "name": "@sparframe/foundation",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Shared runtime and composition foundation for Sparframe",
   "license": "MIT",
   "type": "module",

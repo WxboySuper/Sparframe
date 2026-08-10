@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.1 — 2026-08-10
 
 - harden the Expo/Metro development dependency tree by overriding `uuid` to a
   patched CommonJS-compatible release and patching the zero-length ICNS and
@@ -8,6 +8,10 @@
   advisories;
 - align the mobile shell and generated CLI template with Expo SDK 54 for Expo
   Go compatibility;
+- support shell-scoped catalog exports and contributions in generated app
+  catalogs;
+- select the configured authentication provider when an application discovers
+  more than one provider.
 
 ## 0.1.0 — 2026-08-09
 

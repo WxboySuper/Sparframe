@@ -9,6 +9,6 @@
     "validate:mobile": "sparframe build"
   },
   "devDependencies": {
-    "sparframe": "^0.1.0"
+    "sparframe": "^0.1.1"
   }
 }

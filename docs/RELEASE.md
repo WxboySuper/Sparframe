@@ -1,7 +1,7 @@
 # Sparframe package release
 
-The GitHub core repository and the first npm package release are public. The
-current release is `0.1.0`.
+The GitHub core repository and the npm packages are public. The current release
+is `0.1.1`.
 
 Sparframe has two release layers:
 
@@ -46,7 +46,7 @@ After publication, verify the user-facing path from a clean temporary
 directory:
 
 ```powershell
-npx --yes sparframe@0.1.0 init my-app
+npx --yes sparframe@0.1.1 init my-app
 pnpm --dir my-app build
 ```
 

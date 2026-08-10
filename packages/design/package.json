@@ -1,6 +1,6 @@
 {
   "name": "@sparframe/design",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Cross-shell design tokens for Sparframe applications",
   "license": "MIT",
   "type": "module",
