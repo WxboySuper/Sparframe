@@ -163,7 +163,7 @@ export function renderCatalogManifest(packages, root) {
       scripts: { lint: 'oxlint', typecheck: 'tsc --noEmit' },
       dependencies,
       devDependencies: {
-        '@types/node': '^24.13.3',
+        '@types/node': '^26.1.2',
         oxlint: '^1.75.0',
         typescript: '~6.0.2',
       },
