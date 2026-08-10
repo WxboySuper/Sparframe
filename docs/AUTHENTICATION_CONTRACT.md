@@ -29,3 +29,18 @@ An application-specific provider may implement `AuthProvider` for the web,
 mobile, or another shell. Provider-specific sign-in UI, token storage, refresh
 behavior, route configuration, and authorization policy remain outside the
 core contract.
+
+## Automatic discovery
+
+When an application uses generated extension discovery, an extension may
+declare one `serviceExports.auth` factory. With one discovered provider, the
+catalog re-exports that factory as `discoveredAuthProviderFactory`. With no
+provider, the catalog remains valid and the foundation's no-auth default is
+available.
+
+If several authentication extensions are present, the application must set
+`SPARFRAME_AUTH_PROVIDER` to the selected extension id before running
+`sparframe sync`, `start`, or `build`. Discovery fails clearly when the value
+is missing or does not identify exactly one provider. The selection mechanism
+is provider-neutral; Clerk, local development auth, and other implementations
+remain extensions.
