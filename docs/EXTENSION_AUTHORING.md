@@ -102,6 +102,31 @@ contribution at a declared surface. The generated shell catalogs attach the
 matching implementations automatically; the foundation never imports React
 or React Native.
 
+An extension may also expose shell-specific values from those same entrypoints
+for host wiring, such as a provider component or adapter:
+
+```json
+{
+  "sparframe": {
+    "contributionEntrypoints": {
+      "web": "./web.tsx",
+      "mobile": "./mobile.tsx"
+    },
+    "catalogExports": {
+      "shellValues": {
+        "web": ["WebProvider"],
+        "mobile": ["MobileProvider"]
+      }
+    }
+  }
+}
+```
+
+`shellValues` is optional. Each listed name is re-exported only from that
+shell's generated catalog, and requires the matching contribution entrypoint.
+This keeps shell-specific wiring inside the extension while preserving static
+imports and avoiding edits to the foundation or shell source.
+
 ## 5. Let the app discover it
 
 No registration command or foundation edit is required. The Sparframe CLI
