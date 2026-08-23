@@ -16,7 +16,7 @@
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^26.1.2",
-    "oxlint": "^1.75.0",
+    "oxlint": "^1.79.0",
     "typescript": "~6.0.2"
   }
 }
