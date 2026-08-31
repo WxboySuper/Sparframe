@@ -9,3 +9,11 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    groups:
+      non-major:
+        applies-to: "version-updates"
+        # Keep routine maintenance in one PR. Major updates stay outside this
+        # group, so Dependabot opens a separate PR for each major bump.
+        update-types:
+          - "minor"
+          - "patch"
