@@ -28,8 +28,8 @@
     "access": "public"
   },
   "devDependencies": {
-    "@types/node": "^26.1.2",
-    "oxlint": "^1.75.0",
+    "@types/node": "^26.4.0",
+    "oxlint": "^1.80.0",
     "typescript": "~6.0.2"
   }
 }
